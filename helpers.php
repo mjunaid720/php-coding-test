@@ -12,16 +12,16 @@ function br()
 
 function checkStatus($url)
 {
-    echo getcwd() . "/cer/cacert.pem";
     try {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "./cer/cacert.pem");
-        return curl_exec($ch);
+        curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "/cer/cacert.pem");
+        $response =  curl_exec($ch);
         // Close curl handle
         curl_close($ch);
+        return $response;
     } catch (Exception $e) {
         trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
     }
