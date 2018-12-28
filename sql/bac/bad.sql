@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                       `id` int(11) NOT NULL AUTO_INCREMENT,
+                       `username` varchar(255) DEFAULT NULL,
+                       `password` varchar(255) DEFAULT NULL,
+                       PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -34,11 +34,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-
+START TRANSACTION;
+-- LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'user','secret'),(2,'sensitive_user','even_more_secret');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
-
+-- UNLOCK TABLES;
+COMMIT;
 
 --
 -- Table structure for table `websites`
@@ -48,9 +50,9 @@ DROP TABLE IF EXISTS `websites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `websites` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                          `url` varchar(255) DEFAULT NULL,
+                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -58,10 +60,11 @@ CREATE TABLE `websites` (
 -- Dumping data for table `websites`
 --
 
+START TRANSACTION;
 /*!40000 ALTER TABLE `websites` DISABLE KEYS */;
 INSERT INTO `websites` VALUES (1,'https://www.coolstuff.se'),(2,'https://www.coolstuff.dk'),(3,'https://www.coolstuff.fi'),(4,'https://www.coolstuff.no'),(5,'https://www.coolstuff.de'),(6,'https://www.coolstuff.com'),(7,'https://www.coolstufff.xxx');
 /*!40000 ALTER TABLE `websites` ENABLE KEYS */;
-
+COMMIT;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -12,6 +12,7 @@ function br()
 
 function checkStatus($url)
 {
+    echo getcwd() . "/cer/cacert.pem";
     try {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
